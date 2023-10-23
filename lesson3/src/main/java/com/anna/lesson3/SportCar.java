@@ -15,7 +15,15 @@ public class SportCar extends Car {
 
     @Override
     public void maintenance() {
-
+        if (motorOilChange != null){
+            motorOilChange.motorOilChange();
+        }
+        if (checkGearbox != null){
+            checkGearbox.checkGearbox(this.gearboxType);
+        }
+        if (checkHeadlights != null){
+            checkHeadlights.checkHeadlights();
+        }
     }
 
     @Override
