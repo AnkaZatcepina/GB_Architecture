@@ -1,5 +1,6 @@
 package com.anna.lesson4.task2;
 
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 
@@ -22,9 +23,42 @@ public class Program {
         MobileApp mobileApp = new MobileApp(core.getTicketProvider(), core.getCustomerProvider());
         BusStation busStation = new BusStation(core.getTicketProvider());
 
-        if (mobileApp.buyTicket("1000000000000099")){
+
+        /*if (mobileApp.buyTicket("1000000000000099")){
             mobileApp.searchTicket(new Date());
+        }*/
+        
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date today = formatter.parse(formatter.format(new Date()));
+            mobileApp.searchTickets(today);
+        } 
+        catch (java.text.ParseException e) {
         }
+
+
+        Collection<Ticket> myTickets = mobileApp.getTickets();
+        //System.out.println(myTickets);
+        for (Ticket ticket : myTickets) {
+            System.out.println(ticket.getQrcode());
+        }
+
+        if (busStation.checkTicket("QR-1")){
+            System.out.println("Проходите");
+        }
+        else {
+            System.out.println("Билет не действителен");
+        }        
+        if (busStation.checkTicket("QR-1")){
+            System.out.println("Проходите");
+        }
+        else {
+            System.out.println("Билет не действителен");
+        }
+
+
+        
+
 
     }
 

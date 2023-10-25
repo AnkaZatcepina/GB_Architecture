@@ -1,4 +1,4 @@
-package ru.geekbrains.lesson4.task1;
+package com.anna.lesson4.task1;
 
 public class Program {
 

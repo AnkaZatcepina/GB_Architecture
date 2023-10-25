@@ -7,7 +7,7 @@ public class PriceProvider {
     static Random random = new Random();
 
     public static double getPrice(int componentId){
-        return random.nextInt(20, 100);
+        return random.nextInt(100) + 20;
     }
 
 }
