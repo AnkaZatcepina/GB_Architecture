@@ -2,12 +2,34 @@ package com.anna.lesson3;
 
 import java.awt.*;
 
+import com.anna.lesson3.maintenance.CheckGearbox;
+import com.anna.lesson3.maintenance.CheckHeadlights;
+import com.anna.lesson3.maintenance.MotorOilChange;
+
 public abstract class Car {
 
     private Refueling refueling;
+    private CarWashing carWashing;
+    protected CheckGearbox checkGearbox;
+    protected CheckHeadlights checkHeadlights;
+    protected MotorOilChange motorOilChange;
 
     public void setRefuelingStation(Refueling refuelingStation) {
         this.refueling = refuelingStation;
+    }    
+    
+    public void setCarWash(CarWashing carWash) {
+        this.carWashing = carWash;
+    }
+
+    public void setCheckGearbox(CheckGearbox checkGearbox) {
+        this.checkGearbox = checkGearbox;
+    }
+    public void setCheckHeadlights(CheckHeadlights checkHeadlights) {
+        this.checkHeadlights = checkHeadlights;
+    }
+    public void setMotorOilChange(MotorOilChange motorOilChange) {
+             this.motorOilChange = motorOilChange;
     }
 
     /**
@@ -16,6 +38,15 @@ public abstract class Car {
     public void fuel() {
         if (refueling != null){
             refueling.fuel(fuelType);
+        }
+    }
+
+    /**
+     * Помыть автомобиль
+     */
+    public void wash() {
+        if (carWashing != null){
+            carWashing.wash(type);
         }
     }
 
@@ -70,7 +101,7 @@ public abstract class Car {
     protected FuelType fuelType = FuelType.Diesel;
 
     // Тип коробки передач
-    private GearboxType gearboxType;
+    protected GearboxType gearboxType;
 
     // Объем двигателя
     private double engineCapacity;

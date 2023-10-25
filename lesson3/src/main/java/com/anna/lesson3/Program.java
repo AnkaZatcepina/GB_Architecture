@@ -61,10 +61,33 @@ public class Program {
 
         RefuelingStation refuelingStation = new RefuelingStation();
         RefuelingStationV2 refuelingStation2 = new RefuelingStationV2();
+        CarWash carWash = new CarWash();
+        MaintenanceStation maintenanceStation = new MaintenanceStation();
 
         Harvester harvester = new Harvester("A", "B", Color.BLACK);
         harvester.setRefuelingStation(refuelingStation2);
         harvester.fuel();
+
+        
+        SportCar sportCar = new SportCar("B", "C", Color.RED);
+        sportCar.setRefuelingStation(refuelingStation);
+        sportCar.fuel();
+        sportCar.setCarWash(carWash);
+        sportCar.wash();
+        sportCar.setCheckGearbox(maintenanceStation);
+        sportCar.setCheckHeadlights(maintenanceStation);
+        sportCar.setMotorOilChange(maintenanceStation);
+        sportCar.maintenance();
+
+                
+        Sedan sedan = new Sedan("B", "C", Color.RED);
+        sedan.setRefuelingStation(refuelingStation);
+        sedan.fuel();
+        sedan.setCheckHeadlights(maintenanceStation);
+        sedan.setMotorOilChange(maintenanceStation);
+        sedan.maintenance();
+
+                
     }
 
 
