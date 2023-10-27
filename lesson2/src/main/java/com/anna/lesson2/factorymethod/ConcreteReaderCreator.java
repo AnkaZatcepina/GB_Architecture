@@ -18,6 +18,7 @@ public class ConcreteReaderCreator extends BaseLogReaderCreator {
         if (logType==LogType.System) {
             return new OperationSystemLogEventReader();
         }
+        return null;
         /*return switch (logType){
             case Poem -> new PoemReader();
             case Text -> new TextFileReader();
