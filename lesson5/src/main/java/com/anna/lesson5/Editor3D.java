@@ -107,4 +107,38 @@ public class Editor3D implements UILayer{
     }
 
 
+    @Override
+    public void createTexture() {
+        // Предусловие
+        checkProjectFile();
+
+        Texture texture = businessLogicalLayer.createTexture();
+        System.out.printf("Создана текстура %s\n", texture);
+    }
+
+
+    @Override
+    public void deleteTexture(int i) {
+        // Предусловие
+        checkProjectFile();
+
+        Boolean success = false;
+        ArrayList<Texture> textures = (ArrayList<Texture>)businessLogicalLayer.getAllTextures();
+        for (Texture texture : textures) {
+            if ( texture.getId() == i ){
+                success = true;
+                if ( businessLogicalLayer.deleteTexture(texture) ){
+                    System.out.printf("Текстура %s удалена.\n", texture);
+                } else {
+                throw new RuntimeException("Ошибка при удалении текстуры"); 
+                }
+            }           
+        }
+        if ( success == false ){
+            throw new RuntimeException("Нет такой текстуры");
+        }
+
+        
+        
+    }
 }

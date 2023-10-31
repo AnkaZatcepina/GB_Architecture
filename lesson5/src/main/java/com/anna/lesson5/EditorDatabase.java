@@ -53,4 +53,13 @@ public class EditorDatabase implements Database {
         return new Texture();
     }
 
+    public Texture createTexture(){
+        return generateTexture();
+    }
+
+    @Override
+    public Boolean deleteTexture(Texture texture) {
+        return entities.remove(texture);
+    }
+
 }

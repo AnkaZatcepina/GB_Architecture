@@ -29,6 +29,8 @@ public class Program {
             System.out.println("5. Отобразить все текстуры проекта");
             System.out.println("6. Выполнить рендер всех моделей");
             System.out.println("7. Выполнить рендер модели");
+            System.out.println("8. Создать новую текстуру");
+            System.out.println("9. Удалить текстуру");
             System.out.println("0. ЗАВЕРШЕНИЕ РАБОТЫ ПРИЛОЖЕНИЯ");
             System.out.print("Пожалуйста, выберите пункт меню: ");
             if (scanner.hasNextInt()){
@@ -67,6 +69,20 @@ public class Program {
                             }
                             else {
                                 System.out.println("Номер модели указан некорректно.");
+                            }
+                            break;
+                        case 8:
+                            editor3D.createTexture();
+                            break;
+                        case 9:
+                            System.out.print("Укажите номер текстуры: ");
+                            if (scanner.hasNextInt()){
+                                int textureNo = scanner.nextInt();
+                                scanner.nextLine();
+                                editor3D.deleteTexture(textureNo);
+                            }
+                            else {
+                                System.out.println("Номер текстуры указан некорректно.");
                             }
                             break;
                         default:

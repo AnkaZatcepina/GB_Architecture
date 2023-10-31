@@ -12,4 +12,7 @@ public interface Database {
 
     Collection<Entity> getAll();
 
+    Texture createTexture();
+    Boolean deleteTexture(Texture texture);
+
 }

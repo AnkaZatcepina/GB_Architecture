@@ -64,4 +64,14 @@ public class EditorDatabaseAccess implements DatabaseAccess{
         }
         return models;
     }
+
+    @Override
+    public Texture createTexture() {
+        return editorDatabase.createTexture();
+    }
+
+    @Override
+    public Boolean deleteTexture(Texture texture) {
+        return editorDatabase.deleteTexture(texture);
+    }
 }
