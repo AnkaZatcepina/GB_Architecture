@@ -1,4 +1,5 @@
 package com.anna.lesson4.task2;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class CustomerProvider {
 
@@ -9,8 +10,9 @@ public class CustomerProvider {
     }
 
     public Customer getCustomer(String login, String password){
-        return new Customer();
-        //return database.getCustomers().stream().findFirst().get();
+        //return new Customer();
+        int randomNum = ThreadLocalRandom.current().nextInt(0, 10);
+        return database.getCustomers().stream().skip(randomNum).findFirst().get();
     }
 
 

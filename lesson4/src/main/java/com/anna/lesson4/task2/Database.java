@@ -9,6 +9,23 @@ public class Database {
 
     public Database(){
 
+        /**
+         * Создать фейковую БД
+         */
+
+        for (int i = 0; i < 10; i++) {
+            Customer customer = new Customer();
+            for (int j = 0; j < 10; j++) {
+                Ticket ticket = new Ticket(i); 
+                tickets.add(ticket); 
+                Collection <Ticket> customerTickets = customer.getTickets();
+                customerTickets.add(ticket);    
+                customer.setTickets(customerTickets);  
+            }
+            customers.add(customer);
+        }
+
+        /*
         Ticket ticket1 = new Ticket();
         Ticket ticket2 = new Ticket();
 
@@ -31,7 +48,8 @@ public class Database {
         customers.add(customer2);
         customers.add(customer3);
         customers.add(customer4);
-        customers.add(customer5);
+        customers.add(customer5); 
+        */
     }
 
     private Collection<Ticket> tickets = new ArrayList<>();

@@ -3,6 +3,8 @@ package com.anna.lesson4.task2;
 import java.util.Collection;
 import java.util.Date;
 
+import com.anna.lesson4.task1.ComponentInfo;
+
 public class MobileApp {
     private final Customer customer;
     private final TicketProvider ticketProvider;
@@ -17,8 +19,13 @@ public class MobileApp {
         return customer.getTickets();
     }
 
-    public void searchTicket(Date date){
-        customer.setTickets(ticketProvider.searchTicket(customer.getId(), new Date()));
+    public void searchTickets(Date date){
+        try{            
+            System.out.println(ticketProvider.searchTickets(customer.getId(), date));
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public boolean buyTicket(String cardNo){
