@@ -38,8 +38,18 @@ public class ConcreteNoteEditor implements NoteEditor {
     }
 
     @Override
-    public Optional<Note> getById(Integer integer) {
-        return Optional.empty();
+    public Optional<Note> getById(Integer integer) {      
+        return Optional.empty();        
+    }    
+    
+    @Override
+    public Optional<Note> getByTitle(String title) {
+        Note note = dbContext.getByTitle(title);
+        if (note == null){
+            return Optional.empty();
+        }
+        return Optional.of(note);
+        
     }
 
     @Override
@@ -50,5 +60,16 @@ public class ConcreteNoteEditor implements NoteEditor {
     @Override
     public void printAll() {
         presenter.printAll(getAll());
+    }   
+    
+    @Override
+    public void printOne(Note note) {
+        presenter.printOne(note);
+    }    
+    
+    @Override
+    public void printMessage(String mes) {
+        presenter.printMessage(mes);
     }
+
 }

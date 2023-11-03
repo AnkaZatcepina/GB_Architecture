@@ -7,6 +7,8 @@ import java.util.Collection;
 public interface NotesDatabaseContext {
 
     Collection<Note> getAll();
+    Note getById(Integer id);
+    Note getByTitle(String title);
     boolean saveChanges();
 
 

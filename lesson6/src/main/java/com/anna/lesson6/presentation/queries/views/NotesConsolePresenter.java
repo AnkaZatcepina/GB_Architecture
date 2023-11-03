@@ -11,5 +11,15 @@ public class NotesConsolePresenter implements NotesPresenter {
         for (Note note : notes){
             System.out.println(note);
         }
+    } 
+    
+    @Override
+    public void printOne(Note note) {
+        System.out.println(note);
+    }
+
+    @Override
+    public void printMessage(String mes) {
+        System.out.print(mes);
     }
 }
