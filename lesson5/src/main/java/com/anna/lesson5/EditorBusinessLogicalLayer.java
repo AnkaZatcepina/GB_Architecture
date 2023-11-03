@@ -45,4 +45,17 @@ public class EditorBusinessLogicalLayer implements BusinessLogicalLayer {
             e.printStackTrace();
         }
     }
+
+
+    @Override
+    public Texture createTexture() {
+        return databaseAccess.createTexture();
+    }
+
+
+
+    @Override
+    public Boolean deleteTexture(Texture texture) {
+        return databaseAccess.deleteTexture(texture);
+    }
 }

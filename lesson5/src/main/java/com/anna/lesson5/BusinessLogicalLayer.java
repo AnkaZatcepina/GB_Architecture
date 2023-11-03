@@ -9,5 +9,8 @@ public interface BusinessLogicalLayer {
 
     void renderModel(Model3D model);
     void renderAllModels();
+    
+    Texture createTexture();
+    Boolean deleteTexture(Texture texture);
 
 }

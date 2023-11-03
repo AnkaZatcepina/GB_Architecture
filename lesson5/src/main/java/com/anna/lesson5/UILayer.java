@@ -9,5 +9,7 @@ public interface UILayer {
     void printAllTextures();
     void renderAll();
     void renderModel(int i);
+    void createTexture();
+    void deleteTexture(int i);
 
 }
