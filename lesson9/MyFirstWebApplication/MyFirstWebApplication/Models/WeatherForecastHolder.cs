@@ -80,5 +80,23 @@
             return resultList;
         }
 
+        /// <summary>
+        /// Удалить погоду за определённую дату
+        /// </summary>
+        /// <param name="date"></param>
+        public bool Delete(DateTime date)
+        {
+            foreach (WeatherForecast forecast in _values)
+            {
+                if (forecast.Date == date)
+                {
+                    _values.Remove(forecast);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
     }
 }

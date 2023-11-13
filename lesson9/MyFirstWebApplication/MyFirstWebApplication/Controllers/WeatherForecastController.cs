@@ -36,8 +36,9 @@ namespace MyFirstWebApplication.Controllers
         [HttpDelete("delete-data")]
         public IActionResult Delete([FromQuery] DateTime date)
         {
-            return Ok();
-        }
+            bool result = _weatherForecastHolder.Delete(date);
+            return Ok(result);
+          }
 
         [HttpGet("get-data")]
         public ActionResult<List<WeatherForecast>> Get([FromQuery] DateTime from, [FromQuery] DateTime to)
