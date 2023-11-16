@@ -24,6 +24,8 @@ public class Program {
         NotesController notesController = new NotesController(noteEditor);
 
         notesController.routeGetAll();
+        notesController.deleteNoteByTitle("title #3");
+        notesController.routeGetAll();
     }
 
 }

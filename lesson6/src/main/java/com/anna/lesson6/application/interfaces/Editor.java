@@ -13,6 +13,8 @@ public interface Editor<T, TId> {
 
     Optional<T> getById(TId id);
 
+    Optional<T> getByTitle(String title);
+
     Collection<T> getAll();
 
 }

@@ -23,6 +23,32 @@ public class DatabaseContext extends DbContext implements NotesDatabaseContext {
         return notes;
     }
 
+    public Note getById(Integer id){
+        for (NotesRecord record : ((NotesDatabase)database).getNotesTable().getRecords()){
+            if (record.getId() == id){
+                return new Note(
+                    record.getId(),
+                    record.getTitle(),
+                    record.getDetails()
+                );
+            }
+        }
+        return null;
+    }   
+    
+    public Note getByTitle(String title){
+        for (NotesRecord record : ((NotesDatabase)database).getNotesTable().getRecords()){
+            if (record.getTitle().equals(title)){
+                return new Note(
+                    record.getId(),
+                    record.getTitle(),
+                    record.getDetails()
+                );
+            }
+        }
+        return null;
+    }
+
 
     public DatabaseContext(Database database) {
         super(database);
