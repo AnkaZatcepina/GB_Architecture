@@ -18,7 +18,10 @@ const routes = {
     "/" : "pages/home.html",
     "/settings" : "pages/settings.html",
     "/about" : "pages/about.html",
+    "/primary" : "pages/about/about-primary.html",
+    "/secondary" : "pages/about/about-secondary.html",
     404 : "pages/404.html",
+    "/contacts" : "pages/contacts.html",
     
 }
 
