@@ -28,11 +28,24 @@ public class Reservation {
 
     public String getName() {
         return name;
+    }    
+    
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
 
 
     public int getId() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Резерв #%d на %s, дата %s", id, name, date);
     }
 }
