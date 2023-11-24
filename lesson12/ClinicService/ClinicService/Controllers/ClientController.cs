@@ -70,6 +70,40 @@ namespace ClinicService.Controllers
         [HttpPut("edit")]
         public ActionResult<int> Update([FromBody] UpdateClientRequest updateRequest)
         {
+            if (string.IsNullOrEmpty(updateRequest.SurName))
+                return Ok(new
+                {
+                    ErrCode = -10,
+                    ErrMessage = "Фамилия указана некорректно."
+                });
+
+            if (string.IsNullOrEmpty(updateRequest.FirstName))
+                return Ok(new
+                {
+                    ErrCode = -11,
+                    ErrMessage = "Имя указано некорректно."
+                });
+            if (string.IsNullOrEmpty(updateRequest.Patronymic))
+                return Ok(new
+                {
+                    ErrCode = -12,
+                    ErrMessage = "Отчетство указано некорректно."
+                });
+
+            var dateFrom = DateTime.Now.AddYears(-18);
+            if (updateRequest.Birthday > dateFrom)
+                return Ok(new
+                {
+                    ErrCode = -13,
+                    ErrMessage = "Возраст должен быть указан корректно (больше 18 лет)."
+                });
+            if (string.IsNullOrEmpty(updateRequest.Document) || updateRequest.Document.Length < 10)
+                return Ok(new
+                {
+                    ErrCode = -14,
+                    ErrMessage = "Документ должен быть указан корректно."
+                });
+
             Client client = new Client();
             client.ClientId = updateRequest.ClientId;
             client.Document = updateRequest.Document;
