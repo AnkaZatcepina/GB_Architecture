@@ -134,5 +134,72 @@ namespace ClinicServiceTests
             repository.Create(It.IsNotNull<Client>()), Times.Never());
         }
 
+
+        [Fact]
+        public void DeleteClientTest()
+        {
+            // [1] Подготовка данных для тестирования
+
+            List<Client> clientsList = new List<Client>();
+            clientsList.Add(new Client());
+            clientsList.Add(new Client());
+
+            _mockClientRepository.Setup(repository =>
+            repository.Delete(It.IsNotNull<int>())).Returns(1).Verifiable();
+
+            // [2] Исполнение тестируемого метода
+
+            var operationResult = _clientController.Delete(2);
+
+            // [3] Подготовка эталонного результата, проверка результата
+            Assert.IsType<OkObjectResult>(operationResult.Result);
+            var okObjectResult = (OkObjectResult)operationResult.Result;
+            Assert.IsType<int>(okObjectResult.Value);           
+            Assert.True((int)okObjectResult.Value == 1);
+
+            _mockClientRepository.Verify(repository =>
+              repository.Delete(It.IsNotNull<int>()), Times.AtLeastOnce);
+
+        }
+
+        public static object[][] CorrectUpdateClientData =
+        {
+            new object[] { 1, new DateTime(1986, 1, 22), "AA1 B11222", "Иванов1", "Станислав1", "Андреевич1" },
+        };
+
+
+        [Theory]
+        [MemberData(nameof(CorrectUpdateClientData))]
+        public void UpdateClientTest(
+            int clientId, DateTime birthday, string document, string surName, string firstName, string patronymic)
+        {
+            // [1] Подготовка данных для тестирования
+            List<Client> clientsList = new List<Client>();
+            clientsList.Add(new Client());
+
+            UpdateClientRequest updateClientRequest = new UpdateClientRequest();
+
+            updateClientRequest.ClientId = clientId;
+            updateClientRequest.Birthday = birthday;
+            updateClientRequest.Document = document;
+            updateClientRequest.SurName = surName;
+            updateClientRequest.FirstName = firstName;
+            updateClientRequest.Patronymic = patronymic;
+
+            _mockClientRepository.Setup(repository =>
+            repository.Update(It.IsNotNull<Client>())).Returns(1).Verifiable();
+
+            // [2] Исполнение тестируемого метода
+
+            var operationResult = _clientController.Update(updateClientRequest);
+
+            // [3] Подготовка эталонного результата, проверка результата
+            Assert.IsType<OkObjectResult>(operationResult.Result);
+            var okObjectResult = (OkObjectResult)operationResult.Result;
+            Assert.IsAssignableFrom<int>(okObjectResult.Value);
+            _mockClientRepository.Verify(repository =>
+            repository.Update(It.IsNotNull<Client>()), Times.AtLeastOnce());
+        }
+
     }
 }
